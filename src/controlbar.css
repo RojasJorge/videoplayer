@@ -144,12 +144,12 @@
   min-width: 150px;
 }
 
-/* @font-face {
+@font-face {
   font-family: "icomoon";
   src: url("icomoon.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-} */
+}
 
 .icon-play,
 .icon-pause,
@@ -160,7 +160,7 @@
 .icon-fullscreen-exit,
 .icon-tracks,
 .icon-bitrate {
-  font-family: "sans-serif";
+  font-family: "icomoon";
   font-size: 20px;
   color: white;
   text-shadow: none;

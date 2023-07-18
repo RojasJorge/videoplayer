@@ -6,8 +6,8 @@ import React, { useEffect, useRef } from "react";
 import dashjs from "dashjs";
 import ControlBar from "./ControlBar";
 
-// import "../public/icomoon.ttf";
-// import "./styles.css";
+import "../public/icomoon.ttf";
+import "./styles.css";
 import "./controlbar.css";
 
 export default function VideoPlayer() {
