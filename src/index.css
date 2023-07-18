@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.dash-video-player {
+  max-width: 1200px;
+  margin: 30px auto;
+}

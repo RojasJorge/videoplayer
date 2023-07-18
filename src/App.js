@@ -47,7 +47,7 @@ export default function VideoPlayer() {
           slot="media"
           controls={false}
           ref={videoRef}
-          style={{ width: 400 }}
+          style={{ width: "100%" }}
           preload="auto"
           autoplay="true"
         />
