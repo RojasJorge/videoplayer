@@ -9,9 +9,8 @@
   <body>
     <h1>Video player</h1>
     <hr />
-    <hr />
 
-    <video
+    <!-- <video
       id="my-video"
       class="video-js"
       controls
@@ -20,8 +19,7 @@
       height="264"
       data-setup="{}"
     >
-      <source src="https://player.vimeo.com/video/845015283?player_id=0&amp;app_id=58479" type="text/html" />
-      <!-- <source src="./assets/video.mp4" type="video/mp4" /> -->
+      <source src="./assets/video.mp4" type="video/mp4" />
       <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a
         web browser that
@@ -29,8 +27,37 @@
           >supports HTML5 video</a
         >
       </p>
-    </video>
+    </video> -->
 
-    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <video
+      id="example-video"
+      width="600"
+      height="300"
+      class="video-js vjs-default-skin"
+      controls
+    ></video>
+    <!-- <script src="video.js"></script> -->
+
+    <!-- Dash.js -->
+    <script src="./assets/dash.all.min.js"></script>
+
+    <!-- videojs-contrib-dash script -->
+    <script src="./assets/video-dash.js"></script>
+
+    <script>
+      var player = videojs("example-video");
+
+      player.ready(function () {
+        player.src({
+          src: "https://player.vimeo.com/video/845015283",
+          // src: "https://example.com/dash.mpd",
+          type: "application/dash+xml",
+        });
+
+        player.play();
+      });
+    </script>
+
+    <!-- <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script> -->
   </body>
 </html>
