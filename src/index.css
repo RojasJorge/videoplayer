@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.dash-video-player {
-  max-width: 1200px;
+.container {
+  max-width: 800px;
   margin: 30px auto;
 }
