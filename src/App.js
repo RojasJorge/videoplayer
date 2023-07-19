@@ -20,31 +20,31 @@ export default function VideoPlayer() {
     "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd";
   //  "https://dash.akamaized.net/digitalprimates/fraunhofer/480p_video/heaac_2_0_with_video/Sintel/sintel_480p_heaac2_0.mpd"
 
-  useEffect(() => {
-    if (videoRef.current) {
-      const video = videoRef.current;
+  // useEffect(() => {
+  //   if (videoRef.current) {
+  //     const video = videoRef.current;
 
-      playerRef.current = dashjs.MediaPlayer().create();
+  //     playerRef.current = dashjs.MediaPlayer().create();
 
-      playerRef.current.initialize(video, src, true);
-      playerRef.current.attachView(video);
+  //     playerRef.current.initialize(video, src, true);
+  //     playerRef.current.attachView(video);
 
-      const controlbar = new ControlBar(playerRef.current);
-      //Player is instance of Dash.js MediaPlayer;
-      controlbar.initialize();
-    }
+  //     const controlbar = new ControlBar(playerRef.current);
+  //     //Player is instance of Dash.js MediaPlayer;
+  //     controlbar.initialize();
+  //   }
 
-    return () => {
-      if (playerRef.current) {
-        playerRef.current.destroy();
-        playerRef.current = null;
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (playerRef.current) {
+  //       playerRef.current.destroy();
+  //       playerRef.current = null;
+  //     }
+  //   };
+  // }, []);
 
   return (
     <div className="container">
-      <div class="dash-video-player ">
+      {/* <div class="dash-video-player ">
         <div class="videoContainer" id="videoContainer">
           <video
             slot="media"
@@ -116,8 +116,8 @@ export default function VideoPlayer() {
             </div>
           </div>
         </div>
-      </div>
-      <hr />
+      </div> */}
+      
       <TryVimeo />
     </div>
   );
