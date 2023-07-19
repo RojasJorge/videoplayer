@@ -9,9 +9,9 @@ const TryVimeo = () => {
         JSON.stringify(data)
       );
 
-      const resp = await req.data();
+      // const resp = await req.data();
 
-      console.log("response from webhook ==>>", resp);
+      console.log("response from webhook on end ==>>", req);
       return;
     } catch (error) {
       console.log("error", new Error(error));
@@ -24,9 +24,9 @@ const TryVimeo = () => {
         JSON.stringify(data)
       );
 
-      const resp = await req.data();
+      // const resp = await req.data();
 
-      console.log("response from webhook ==>>", resp);
+      console.log("response from webhook on pause ==>>", req);
       return;
     } catch (error) {
       console.log("error", new Error(error));
