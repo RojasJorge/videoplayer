@@ -3,7 +3,7 @@
 // View this code on codesandbox: https://codesandbox.io/s/mux-data-dash-js-react-irp99
 //
 import React, { useEffect, useRef } from "react";
-import dashjs from "dashjs";
+// import dashjs from "dashjs";
 import ControlBar from "./ControlBar";
 
 import "./icomoon.ttf";
