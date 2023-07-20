@@ -1,7 +1,13 @@
 import axios from "axios";
-import Vimeo from "@u-wave/react-vimeo";
+// import Vimeo from "@u-wave/react-vimeo";
+import Vimeo from "react-vimeo";
+
+const doPlay = () => {
+  return <button>INICIAR</button>;
+};
 
 const SingleVideoPage = ({ vid }) => {
+  // const player = new Vimeo.Player();
   const eventHandler = async (e: any, type: string) => {
     e.type = type;
 
@@ -20,20 +26,30 @@ const SingleVideoPage = ({ vid }) => {
   };
   return (
     <>
+      <button id="doplay">INICIAR / PAUSAR</button>
       <Vimeo
-        width={`100%`}
-        height={`auto`}
-        onPlay={(e) => {
-          console.log("opPlay", e);
+        videoId={vid}
+        className="vimeo-wrapper"
+        loading={<h3>Cargando video...</h3>}
+        autoplay={true}
+        playButton="doplay"
+        playerOptions={{
+          controls: false,
+          keyboard: false,
+          // onP
         }}
-        video={vid}
-        onEnd={(e) => eventHandler(e, "onEnd")}
-        autoplay
-        controls={false}
-        onPause={(e) => eventHandler(e, "onPause")}
+        // onPlay={(e) => {
+        //   console.log("opPlay", e);
+        // }}
+        // onEnd={(e) => eventHandler(e, "onEnd")}
+        // autoplay
+        // onPause={(e) => eventHandler(e, "onPause")}
         // keyboard={false}
-        showPortrait
-        showByline
+        // onReady={(e) => {
+        //   console.log("is ready", e.element);
+        // }}
+        // showPortrait
+        // showByline
       />
     </>
   );
