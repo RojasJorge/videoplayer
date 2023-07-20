@@ -11,7 +11,7 @@ import ReactPlayer from "react-player/lazy";
 const SingleVideoPage = ({ vid }) => {
   const [loaded, setLoaded] = useState(false);
 
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   const playPauseTrigger = useRef<HTMLInputElement>(null);
 
