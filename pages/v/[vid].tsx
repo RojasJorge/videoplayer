@@ -34,19 +34,15 @@ const SingleVideoPage = ({ vid }) => {
     playPauseTrigger.current.click();
   };
 
-  const eventHandler = async (e: any) => {
-    // e.type = type;
-
-    console.log("the type is-->>", e);
-
-    // try {
-    //   const req = await axios.post(
-    //     process.env.NEXT_PUBLIC_WEBHOOK,
-    //     JSON.stringify(e)
-    //   );
-    // } catch (error) {
-    //   console.log("error", new Error(error));
-    // {
+  const handleEnd = async (e: void) => {
+    try {
+      const req = await axios.post(
+        process.env.NEXT_PUBLIC_WEBHOOK,
+        JSON.stringify({ type: "onEnd", data: e })
+      );
+    } catch (error) {
+      console.log("error", new Error(error));
+    }
   };
 
   useEffect(() => {
@@ -65,6 +61,7 @@ const SingleVideoPage = ({ vid }) => {
           playing={playing}
           onPause={handlePause}
           onReady={handleReady}
+          onEnded={handleEnd}
         />
       ) : (
         // <Vimeo
