@@ -29,8 +29,7 @@ const SingleVideoPage = ({ vid }) => {
   };
 
   const handleReady = (e: any) => {
-    console.log("IS READY", e, playPauseTrigger);
-    setPlaying(true);
+    // setPlaying(true);
     playPauseTrigger.current.click();
   };
 
@@ -47,7 +46,7 @@ const SingleVideoPage = ({ vid }) => {
 
   useEffect(() => {
     setLoaded(true);
-    playPauseTrigger.current.click();
+    // playPauseTrigger.current.click();
   }, []);
 
   return (
@@ -62,6 +61,12 @@ const SingleVideoPage = ({ vid }) => {
           onPause={handlePause}
           onReady={handleReady}
           onEnded={handleEnd}
+          controls={false}
+          config={{
+            vimeo: {
+              playerOptions: {},
+            },
+          }}
         />
       ) : (
         // <Vimeo
@@ -81,7 +86,6 @@ const SingleVideoPage = ({ vid }) => {
         ref={playPauseTrigger}
         className="play-pause-custom"
         onClick={() => {
-          console.log("clicked!!!");
           setPlaying(!playing);
         }}
       ></div>
