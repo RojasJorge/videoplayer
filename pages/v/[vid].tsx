@@ -30,7 +30,7 @@ const SingleVideoPage = ({ vid }) => {
       <Vimeo
         videoId={vid}
         className="vimeo-wrapper"
-        loading={<h3>Cargando video...</h3>}
+        loading={<p>Cargando contenido</p>}
         autoplay={true}
         playButton="doplay"
         playerOptions={{
