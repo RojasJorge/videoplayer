@@ -16,12 +16,12 @@ const SingleVideoPage = ({ vid }) => {
   const playPauseTrigger = useRef<HTMLInputElement>(null);
 
   const handlePause = async (e: void) => {
-    e.type = "onPause";
+    // e.type = "onPause";
 
     try {
       const req = await axios.post(
         process.env.NEXT_PUBLIC_WEBHOOK,
-        JSON.stringify(e)
+        JSON.stringify({ type: "onPause", data: e })
       );
     } catch (error) {
       console.log(error);
