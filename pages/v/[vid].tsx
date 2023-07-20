@@ -1,17 +1,18 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
 // import Vimeo from "@u-wave/react-vimeo";
-import Vimeo from "react-vimeo";
+// import Vimeo from "react-vimeo";
+// import ReactPlayer from "react-player/vimeo";
 
-const doPlay = () => {
-  return <button>INICIAR</button>;
-};
+import { default as _ReactPlayer } from "react-player";
+import { ReactPlayerProps } from "react-player/types/lib";
+const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 const SingleVideoPage = ({ vid }) => {
-  // const player = new Vimeo.Player();
+  const [loaded, setLoaded] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const eventHandler = async (e: any, type: string) => {
     e.type = type;
-
-    console.log("event -->>", e);
 
     // try {
     //   const req = await axios.post(
@@ -24,33 +25,27 @@ const SingleVideoPage = ({ vid }) => {
     //   console.log("error", new Error(error));
     // }
   };
+
+  useEffect(() => {
+    setLoaded(true);
+    setPlaying(true);
+  }, [playing]);
   return (
     <>
-      <button id="doplay">INICIAR / PAUSAR</button>
-      <Vimeo
-        videoId={vid}
-        className="vimeo-wrapper"
-        loading={<p>Cargando contenido</p>}
-        autoplay={true}
-        playButton="doplay"
-        playerOptions={{
-          controls: false,
-          keyboard: false,
-          // onP
-        }}
-        // onPlay={(e) => {
-        //   console.log("opPlay", e);
-        // }}
-        // onEnd={(e) => eventHandler(e, "onEnd")}
-        // autoplay
-        // onPause={(e) => eventHandler(e, "onPause")}
-        // keyboard={false}
-        // onReady={(e) => {
-        //   console.log("is ready", e.element);
-        // }}
-        // showPortrait
-        // showByline
-      />
+      {/* <button id="doplay">INICIAR / PAUSAR</button> */}
+      {loaded ? (
+        <ReactPlayer
+          url={`https://player.vimeo.com/video/${vid}`}
+          width="100vw"
+          height="100vh"
+          controls={false}
+          playing={playing}
+        />
+      ) : (
+        "cargando"
+      )}
+
+      <button onClick={() => setPlaying(!playing)}>Play/Pause</button>
     </>
   );
 };
