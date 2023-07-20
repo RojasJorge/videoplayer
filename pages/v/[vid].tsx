@@ -62,12 +62,14 @@ const SingleVideoPage = ({ vid }) => {
           onReady={handleReady}
           onEnded={handleEnd}
           controls={false}
-          vimeoConfig={{ iframeParams: { fullscreen: 0 } }}
-          // config={{
-          //   vimeo: {
-          //     playerOptions: {},
-          //   },
-          // }}
+          // vimeoConfig={{ iframeParams: { fullscreen: 0 } }}
+          config={{
+            file: {
+              attributes: {
+                controlsList: "nofullscreen",
+              },
+            },
+          }}
         />
       ) : (
         // <Vimeo
