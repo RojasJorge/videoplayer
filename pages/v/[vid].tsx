@@ -12,8 +12,13 @@ const SingleVideoPage = ({ vid }) => {
   const [loaded, setLoaded] = useState(false);
 
   const [playing, setPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
 
   const playPauseTrigger = useRef<HTMLInputElement>(null);
+
+  const handlePlay = () => {
+    setMuted(false);
+  };
 
   const handlePause = async (e: void) => {
     // e.type = "onPause";
@@ -51,25 +56,20 @@ const SingleVideoPage = ({ vid }) => {
 
   return (
     <>
-      {/* <button id="doplay">INICIAR / PAUSAR</button> */}
       {loaded ? (
         <ReactPlayer
-          url={`https://player.vimeo.com/video/${vid}`}
+          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1`}
           width="100vw"
           height="100vh"
           playing={playing}
           onPause={handlePause}
           onReady={handleReady}
           onEnded={handleEnd}
-          controls={false}
-          // vimeoConfig={{ iframeParams: { fullscreen: 0 } }}
-          config={{
-            file: {
-              attributes: {
-                controlsList: "nofullscreen",
-              },
-            },
-          }}
+          onPlay={handlePlay}
+          // controls={false}
+          muted={muted}
+          autoPlay={true}
+          allow="autoplay"
         />
       ) : (
         // <Vimeo
