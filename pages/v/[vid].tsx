@@ -58,7 +58,7 @@ const SingleVideoPage = ({ vid }) => {
     <>
       {loaded ? (
         <ReactPlayer
-          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1`}
+          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0`}
           width="100vw"
           height="100vh"
           playing={playing}
