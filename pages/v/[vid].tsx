@@ -51,7 +51,7 @@ const SingleVideoPage = ({ vid }) => {
 
   useEffect(() => {
     setLoaded(true);
-    // playPauseTrigger.current.click();
+    playPauseTrigger.current.click();
   }, []);
 
   return (
