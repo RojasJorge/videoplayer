@@ -61,6 +61,7 @@ const SingleVideoPage = ({ vid }) => {
           url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0`}
           width="100vw"
           height="100vh"
+          background={true}
           playing={playing}
           onPause={handlePause}
           onReady={handleReady}
