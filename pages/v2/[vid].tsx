@@ -8,15 +8,15 @@ const SingleVideoPage2 = ({ vid }) => {
   const [progress, setProgress] = useState(0);
   const videoRef = useRef(null);
 
-  const togglePlay = () => {
-    if (isPlaying) {
-      videoRef.current.pause();
-    } else {
-      videoRef.current.play();
-      setMuted(true);
-    }
-    setIsPlaying(!isPlaying);
-  };
+  // const togglePlay = () => {
+  //   if (isPlaying) {
+  //     videoRef.current.pause();
+  //   } else {
+  //     videoRef.current.play();
+  //     setMuted(true);
+  //   }
+  //   setIsPlaying(!isPlaying);
+  // };
 
   const handleProgress = () => {
     const duration = videoRef.current.duration;
@@ -27,14 +27,6 @@ const SingleVideoPage2 = ({ vid }) => {
 
   useEffect(() => {
     setLoaded(true);
-
-    setTimeout(() => {
-      togglePlay();
-      // videoRef.current.
-      videoRef.current.actions.toggleFullscreen = () => {
-        console.log("prevent full screen video");
-      };
-    }, 500);
   }, []);
 
   // /6ea8f459-d197aca4.mp4
@@ -43,7 +35,8 @@ const SingleVideoPage2 = ({ vid }) => {
     <>
       {loaded ? (
         <>
-          <video
+          <iframe src={`/v/${vid}`} />
+          {/* <video
             className="native-video"
             playsInline={false}
             onTimeUpdate={handleProgress}
@@ -56,11 +49,11 @@ const SingleVideoPage2 = ({ vid }) => {
             controls
           >
             <source src="/6ea8f459-d197aca4.mp4" />
-          </video>
-          <div>
+          </video> */}
+          {/* <div>
             <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
             <progress value={progress} max="100" />
-          </div>
+          </div> */}
         </>
       ) : (
         "Cargando contenido..."

@@ -62,38 +62,36 @@ const SingleVideoPage = ({ vid }) => {
   return (
     <>
       {loaded ? (
-        <iframe src="">
-          <ReactPlayer
-            ref={videoRef}
-            url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0&noallowfullscreen=1`}
-            width="100vw"
-            height="100vh"
-            playsinline={false}
-            background={true}
-            playing={playing}
-            onPause={handlePause}
-            onReady={handleReady}
-            onEnded={handleEnd}
-            onPlay={handlePlay}
-            controls={false}
-            muted={muted}
-            // autoPlay={true}
-            allow="autoplay"
-            config={{
-              file: {
-                attributes: {
-                  playsInline: false,
-                  disablepictureinpicture: true,
-                },
+        <ReactPlayer
+          ref={videoRef}
+          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0&noallowfullscreen=1`}
+          width="100vw"
+          height="100vh"
+          playsinline={false}
+          background={true}
+          playing={playing}
+          onPause={handlePause}
+          onReady={handleReady}
+          onEnded={handleEnd}
+          onPlay={handlePlay}
+          controls={false}
+          muted={muted}
+          // autoPlay={true}
+          allow="autoplay"
+          config={{
+            file: {
+              attributes: {
+                playsInline: false,
+                disablepictureinpicture: true,
               },
-              vimeo: {
-                playerOptions: {
-                  allowFullScreen: false,
-                },
+            },
+            vimeo: {
+              playerOptions: {
+                allowFullScreen: false,
               },
-            }}
-          />
-        </iframe>
+            },
+          }}
+        />
       ) : (
         // <Vimeo
         //   video={vid}
