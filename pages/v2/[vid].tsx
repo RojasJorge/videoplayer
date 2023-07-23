@@ -1,15 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-// import Vimeo from "@u-wave/react-vimeo";
-// import Vimeo from "react-vimeo";
-import ReactPlayer from "react-player/lazy";
-
-// import { default as _ReactPlayer } from "react-player";
-// import { ReactPlayerProps } from "react-player/types/lib";
-// const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
 const SingleVideoPage2 = ({ vid }) => {
   const [loaded, setLoaded] = useState(false);
+  const [muted, setMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const videoRef = useRef(null);
@@ -19,6 +13,7 @@ const SingleVideoPage2 = ({ vid }) => {
       videoRef.current.pause();
     } else {
       videoRef.current.play();
+      setMuted(true);
     }
     setIsPlaying(!isPlaying);
   };
@@ -48,6 +43,7 @@ const SingleVideoPage2 = ({ vid }) => {
             width="100%"
             height="100%"
             controlsList="nofullscreen"
+            muted={muted}
             controls
           >
             <source src="/6ea8f459-d197aca4.mp4" />
