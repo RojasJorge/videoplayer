@@ -8,50 +8,30 @@ import ReactPlayer from "react-player/lazy";
 // import { ReactPlayerProps } from "react-player/types/lib";
 // const ReactPlayer = _ReactPlayer as unknown as React.FC<ReactPlayerProps>;
 
-const SingleVideoPage = ({ vid }) => {
+const SingleVideoPage2 = ({ vid }) => {
   const [loaded, setLoaded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const videoRef = useRef(null);
 
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
-
-  const playPauseTrigger = useRef<HTMLInputElement>(null);
-
-  const handlePlay = () => {
-    // setMuted(false);
-  };
-
-  const handlePause = async (e: void) => {
-    // e.type = "onPause";
-
-    try {
-      const req = await axios.post(
-        process.env.NEXT_PUBLIC_WEBHOOK,
-        JSON.stringify({ type: "onPause", data: e })
-      );
-    } catch (error) {
-      console.log(error);
+  const togglePlay = () => {
+    if (isPlaying) {
+      videoRef.current.pause();
+    } else {
+      videoRef.current.play();
     }
+    setIsPlaying(!isPlaying);
   };
 
-  const handleReady = (e: any) => {
-    setPlaying(true);
-    playPauseTrigger.current.click();
-  };
-
-  const handleEnd = async (e: void) => {
-    try {
-      const req = await axios.post(
-        process.env.NEXT_PUBLIC_WEBHOOK,
-        JSON.stringify({ type: "onEnd", data: e })
-      );
-    } catch (error) {
-      console.log("error", new Error(error));
-    }
+  const handleProgress = () => {
+    const duration = videoRef.current.duration;
+    const currentTime = videoRef.current.currentTime;
+    const progress = (currentTime / duration) * 100;
+    setProgress(progress);
   };
 
   useEffect(() => {
     setLoaded(true);
-    playPauseTrigger.current.click();
   }, []);
 
   // /6ea8f459-d197aca4.mp4
@@ -59,31 +39,26 @@ const SingleVideoPage = ({ vid }) => {
   return (
     <>
       {loaded ? (
-        <video>
-          <source src="/6ea8f459-d197aca4.mp4" />
-        </video>
+        <>
+          <video
+            className="native-video"
+            playsInline={false}
+            onTimeUpdate={handleProgress}
+            ref={videoRef}
+            width="100%"
+            height="100%"
+            controls
+          >
+            <source src="/6ea8f459-d197aca4.mp4" />
+          </video>
+          <div>
+            <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
+            <progress value={progress} max="100" />
+          </div>
+        </>
       ) : (
-        // <Vimeo
-        //   video={vid}
-        //   // videoId={vid}
-        //   width="100%"
-        //   height="100vh"
-        //   controls={false}
-        //   playsInline
-        //   autoplay
-        //   responsive
-        // />
         "Cargando contenido..."
       )}
-
-      <div
-        ref={playPauseTrigger}
-        className="play-pause-custom"
-        onClick={() => {
-          setMuted(true);
-          setPlaying(!playing);
-        }}
-      ></div>
     </>
   );
 };
@@ -96,4 +71,4 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default SingleVideoPage;
+export default SingleVideoPage2;

@@ -61,6 +61,16 @@ a {
   width: 100%;
 }
 
+/** Generic classes for video tag */
+.native-video {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
 iframe {
   width: 100%;
   max-width: 100%;
