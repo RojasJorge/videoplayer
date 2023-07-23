@@ -13,6 +13,7 @@ const SingleVideoPage = ({ vid }) => {
 
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
+  const videoRef = useRef();
 
   const playPauseTrigger = useRef<HTMLInputElement>(null);
 
@@ -52,36 +53,47 @@ const SingleVideoPage = ({ vid }) => {
   useEffect(() => {
     setLoaded(true);
 
+    // videoRef.current.actions.toggleFullscreen = () => {
+    //   console.log("prevent full screen video");
+    // };
     // playPauseTrigger.current.click();
   }, []);
 
   return (
     <>
       {loaded ? (
-        <ReactPlayer
-          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0&noallowfullscreen=1`}
-          width="100vw"
-          height="100vh"
-          playsinline={false}
-          background={true}
-          playing={playing}
-          onPause={handlePause}
-          onReady={handleReady}
-          onEnded={handleEnd}
-          onPlay={handlePlay}
-          controls={false}
-          muted={muted}
-          // autoPlay={true}
-          allow="autoplay"
-          config={{
-            file: {
-              attributes: {
-                playsInline: false,
-                disablepictureinpicture: true,
+        <iframe src="">
+          <ReactPlayer
+            ref={videoRef}
+            url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0&noallowfullscreen=1`}
+            width="100vw"
+            height="100vh"
+            playsinline={false}
+            background={true}
+            playing={playing}
+            onPause={handlePause}
+            onReady={handleReady}
+            onEnded={handleEnd}
+            onPlay={handlePlay}
+            controls={false}
+            muted={muted}
+            // autoPlay={true}
+            allow="autoplay"
+            config={{
+              file: {
+                attributes: {
+                  playsInline: false,
+                  disablepictureinpicture: true,
+                },
               },
-            },
-          }}
-        />
+              vimeo: {
+                playerOptions: {
+                  allowFullScreen: false,
+                },
+              },
+            }}
+          />
+        </iframe>
       ) : (
         // <Vimeo
         //   video={vid}

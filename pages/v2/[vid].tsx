@@ -30,6 +30,10 @@ const SingleVideoPage2 = ({ vid }) => {
 
     setTimeout(() => {
       togglePlay();
+      // videoRef.current.
+      videoRef.current.actions.toggleFullscreen = () => {
+        console.log("prevent full screen video");
+      };
     }, 500);
   }, []);
 
