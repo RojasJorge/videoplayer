@@ -75,7 +75,8 @@ const SingleVideoPage = ({ vid }) => {
           config={{
             file: {
               attributes: {
-                playsInline: true,
+                playsInline: false,
+                disablepictureinpicture: true,
               },
             },
           }}
