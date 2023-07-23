@@ -47,6 +47,7 @@ const SingleVideoPage2 = ({ vid }) => {
             ref={videoRef}
             width="100%"
             height="100%"
+            controlsList="nofullscreen"
             controls
           >
             <source src="/6ea8f459-d197aca4.mp4" />
