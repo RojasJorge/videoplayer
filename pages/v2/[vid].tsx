@@ -27,6 +27,7 @@ const SingleVideoPage2 = ({ vid }) => {
 
   useEffect(() => {
     setLoaded(true);
+    setIsPlaying(!isPlaying);
   }, []);
 
   // /6ea8f459-d197aca4.mp4
