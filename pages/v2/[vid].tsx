@@ -35,7 +35,14 @@ const SingleVideoPage2 = ({ vid }) => {
     <>
       {loaded ? (
         <>
-          <iframe src={`/v/${vid}`} />
+          <embed
+            style={{
+              width: "100vw",
+              height: "100vh",
+            }}
+            type="text/html"
+            src={`/v/${vid}`}
+          />
           {/* <video
             className="native-video"
             playsInline={false}
