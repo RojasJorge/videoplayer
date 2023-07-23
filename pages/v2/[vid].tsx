@@ -54,33 +54,14 @@ const SingleVideoPage = ({ vid }) => {
     playPauseTrigger.current.click();
   }, []);
 
+  // /6ea8f459-d197aca4.mp4
+
   return (
     <>
       {loaded ? (
-        <ReactPlayer
-          url="/6ea8f459-d197aca4.mp4"
-          width="100vw"
-          height="100vh"
-          playsinline={false}
-          background={true}
-          playing={playing}
-          onPause={handlePause}
-          onReady={handleReady}
-          onEnded={handleEnd}
-          onPlay={handlePlay}
-          controls={false}
-          muted={muted}
-          autoPlay={true}
-          allow="autoplay"
-          config={{
-            file: {
-              attributes: {
-                playsInline: false,
-                disablepictureinpicture: true,
-              },
-            },
-          }}
-        />
+        <video>
+          <source src="/6ea8f459-d197aca4.mp4" />
+        </video>
       ) : (
         // <Vimeo
         //   video={vid}
