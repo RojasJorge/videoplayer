@@ -46,7 +46,7 @@ const SingleVideoPage2 = ({ vid }) => {
             ref={videoRef}
             width="100%"
             height="100%"
-            // autoPlay
+            is="x-muted"
             controlsList="nofullscreen"
             muted={muted}
             controls

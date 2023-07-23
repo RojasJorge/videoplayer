@@ -34,7 +34,7 @@ const SingleVideoPage = ({ vid }) => {
   };
 
   const handleReady = (e: any) => {
-    // setPlaying(true);
+    setPlaying(true);
     playPauseTrigger.current.click();
   };
 
@@ -51,14 +51,15 @@ const SingleVideoPage = ({ vid }) => {
 
   useEffect(() => {
     setLoaded(true);
-    playPauseTrigger.current.click();
+
+    // playPauseTrigger.current.click();
   }, []);
 
   return (
     <>
       {loaded ? (
         <ReactPlayer
-          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0`}
+          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0&noallowfullscreen=1`}
           width="100vw"
           height="100vh"
           playsinline={false}
@@ -70,7 +71,7 @@ const SingleVideoPage = ({ vid }) => {
           onPlay={handlePlay}
           controls={false}
           muted={muted}
-          autoPlay={true}
+          // autoPlay={true}
           allow="autoplay"
           config={{
             file: {
