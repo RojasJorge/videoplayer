@@ -29,7 +29,7 @@ const SingleVideoPage2 = ({ vid }) => {
     setLoaded(true);
 
     setTimeout(() => {
-      setIsPlaying(!isPlaying);
+      togglePlay();
     }, 500);
   }, []);
 
@@ -46,7 +46,7 @@ const SingleVideoPage2 = ({ vid }) => {
             ref={videoRef}
             width="100%"
             height="100%"
-            autoPlay
+            // autoPlay
             controlsList="nofullscreen"
             muted={muted}
             controls
