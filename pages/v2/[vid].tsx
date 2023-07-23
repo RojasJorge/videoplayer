@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 const SingleVideoPage2 = ({ vid }) => {
   const [loaded, setLoaded] = useState(false);
@@ -27,7 +27,10 @@ const SingleVideoPage2 = ({ vid }) => {
 
   useEffect(() => {
     setLoaded(true);
-    setIsPlaying(!isPlaying);
+
+    setTimeout(() => {
+      setIsPlaying(!isPlaying);
+    }, 500);
   }, []);
 
   // /6ea8f459-d197aca4.mp4
@@ -43,6 +46,7 @@ const SingleVideoPage2 = ({ vid }) => {
             ref={videoRef}
             width="100%"
             height="100%"
+            autoPlay
             controlsList="nofullscreen"
             muted={muted}
             controls
