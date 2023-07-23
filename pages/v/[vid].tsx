@@ -17,7 +17,7 @@ const SingleVideoPage = ({ vid }) => {
   const playPauseTrigger = useRef<HTMLInputElement>(null);
 
   const handlePlay = () => {
-    setMuted(false);
+    // setMuted(false);
   };
 
   const handlePause = async (e: void) => {
