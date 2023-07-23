@@ -56,7 +56,8 @@ const SingleVideoPage = ({ vid }) => {
     setLoaded(true);
 
     // videoRef.current.player;
-    console.log("REACT PLAYER REF -->>", videoRef.current);
+    // console.log("REACT PLAYER REF -->>", videoRef.current);
+    console.log("videoRef -->>", videoRef.current);
 
     // videoRef.current.actions.toggleFullscreen = () => {
     //   console.log("prevent full screen video");
