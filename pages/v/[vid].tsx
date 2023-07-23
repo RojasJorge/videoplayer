@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Head from "next/head";
 import axios from "axios";
 // import Vimeo from "@u-wave/react-vimeo";
 // import Vimeo from "react-vimeo";
@@ -54,6 +55,9 @@ const SingleVideoPage = ({ vid }) => {
   useEffect(() => {
     setLoaded(true);
 
+    // videoRef.current.player;
+    console.log("REACT PLAYER REF -->>", videoRef.current);
+
     // videoRef.current.actions.toggleFullscreen = () => {
     //   console.log("prevent full screen video");
     // };
@@ -62,10 +66,13 @@ const SingleVideoPage = ({ vid }) => {
 
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       {loaded ? (
         <ReactPlayer
           ref={videoRef}
-          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0&noallowfullscreen=1`}
+          url={`https://player.vimeo.com/video/${vid}?autoplay=1&controls=0&muted=1&playsinline=0&noallowfullscreen=1&preload=1`}
           width="100vw"
           height="100vh"
           playsinline={true}
@@ -78,7 +85,7 @@ const SingleVideoPage = ({ vid }) => {
           controls={false}
           muted={muted}
           // autoPlay={true}
-          allow="autoplay"
+          allow="autoplay; preload"
           config={{
             file: {
               attributes: {
