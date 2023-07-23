@@ -68,10 +68,17 @@ const SingleVideoPage = ({ vid }) => {
           onReady={handleReady}
           onEnded={handleEnd}
           onPlay={handlePlay}
-          // controls={false}
+          controls={false}
           muted={muted}
           autoPlay={true}
           allow="autoplay"
+          config={{
+            file: {
+              attributes: {
+                playsInline: true,
+              },
+            },
+          }}
         />
       ) : (
         // <Vimeo
