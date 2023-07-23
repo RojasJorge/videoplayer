@@ -99,7 +99,7 @@ const SingleVideoPage = ({ vid }) => {
         ref={playPauseTrigger}
         className="play-pause-custom"
         onClick={() => {
-          setMuted(false);
+          setMuted(true);
           setPlaying(!playing);
         }}
       ></div>
