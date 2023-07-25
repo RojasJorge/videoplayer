@@ -29,10 +29,9 @@ const CustomPlayer = ({ vid, query }) => {
     };
 
     try {
-      const req = await axios.post(
-        process.env.NEXT_PUBLIC_WEBHOOK,
-        JSON.stringify(data)
-      );
+      await axios.post(process.env.NEXT_PUBLIC_WEBHOOK, JSON.stringify(data));
+
+      return;
     } catch (error) {
       console.log(error);
     }
