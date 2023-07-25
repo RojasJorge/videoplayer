@@ -53,6 +53,10 @@ const CustomPlayer = ({ vid, query }) => {
         onEnded={handleEndEvent}
         onPause={handlePauseEvent}
         onClick={handleClick}
+        playsInline
+        onTouchStart={(e) => {
+          console.log("onTouchStart() -->>", e);
+        }}
         muted={muted}
         controls={false}
         preload="true"
