@@ -6,6 +6,20 @@ const CustomPlayer = ({ vid, query }) => {
 
   const [muted, setMuted] = useState(true);
 
+  const parseThisTo = (format: string, value: string | number) => {
+    switch (format) {
+      case "float":
+        if (typeof value === "number") {
+          return parseFloat(value.toFixed(2));
+        }
+        break;
+
+      default:
+        return value;
+        break;
+    }
+  };
+
   const handleClick = () => {
     const video = videoRef.current;
 
@@ -21,10 +35,15 @@ const CustomPlayer = ({ vid, query }) => {
   };
 
   const notifier = async (e: any) => {
+    const currentTime = parseThisTo("float", videoRef.current.currentTime);
+    const duration = parseThisTo("float", videoRef.current.duration);
+
+    if (e.type === "pause" && currentTime === duration) return false;
+
     const data = {
       ...query,
       type: e.type,
-      currentTime: videoRef.current.currentTime,
+      currentTime,
       timeStamp: Date.now(),
     };
 
@@ -51,11 +70,11 @@ const CustomPlayer = ({ vid, query }) => {
         onEnded={notifier}
         onPause={notifier}
         onClick={handleClick}
-        playsInline
         muted={muted}
         controls={false}
         preload="true"
         autoPlay={true}
+        playsInline
       >
         <source src={`/${vid}.mp4`} type="video/mp4" />
       </video>
