@@ -35,17 +35,16 @@ const SingleVideoPage2 = ({ vid }) => {
     <>
       {loaded ? (
         <>
-          <embed
+          <iframe
             style={{
-              width: "100%",
-              height: "100%",
+              width: "100vw",
+              height: "100vh",
               position: "absolute",
               top: 0,
               left: 0,
               border: 0,
             }}
-            type="text/html"
-            src={`/v/${vid}`}
+            src={`/v3/${vid}?phone=50252099273`}
           />
           {/* <video
             className="native-video"
