@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 
 const CustomPlayer = ({ vid, query }) => {
+  /** Video reference */
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [muted, setMuted] = useState(true);
